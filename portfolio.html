@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muthu Rahul P | Full Stack Developer</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #95a5a6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--secondary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .profile-img {
+            margin: 60px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin: 1.5rem 0;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            margin: 1rem 0;
+            color: var(--secondary);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .section {
+            padding: 3rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .skill {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-tech {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--accent);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -12px;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        /* Certificate Styles */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .certificate-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .certificate-img-container {
+            height: 200px;
+            overflow: hidden;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .certificate-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .certificate-card:hover .certificate-img {
+            transform: scale(1.05);
+        }
+        
+        .certificate-details {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .certificate-details h4 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        .certificate-details p {
+            margin: 0.3rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .view-certificate-btn {
+            margin-top: auto;
+            padding: 0.7rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .view-certificate-btn:hover {
+            background-color: var(--accent);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 90%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        .modal-certificate-img {
+            width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            margin-top: 1rem;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: var(--accent);
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-btn:hover {
+            color: var(--primary);
+        }
+        
+        #modal-title {
+            color: var(--secondary);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        /* Dark mode toggle */
+        .dark-mode {
+            background-color: var(--dark);
+            color: var(--light);
+        }
+        
+        .dark-mode .section {
+            border-bottom: 1px solid #444;
+        }
+        
+        .dark-mode h2, .dark-mode h3 {
+            color: var(--primary);
+        }
+        
+        .dark-mode .project-card, .dark-mode .timeline-content, 
+        .dark-mode .certificate-card, .dark-mode .certificate-details {
+            background-color: #34495e;
+            color: var(--light);
+        }
+        
+        .dark-mode .project-tech {
+            color: #bdc3c7;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(44, 62, 80, 0.9);
+            z-index: 99;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        .active {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left::after, .right::after {
+                left: 21px;
+            }
+            
+            .right {
+                left: 0;
+            }
+            
+            .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#about" class="active">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+    
+    <header id="about">
+        <div class="container">
+            <img src="pictures\rahul4.webp" alt="Muthu Rahul P" class="profile-img" id="profile-pic">
+            <h1>Muthu Rahul P</h1>
+            <h2>Full Stack Developer</h2>
+            <p>Aspiring Full Stack Developer with hands-on experience in frontend development using HTML, CSS, and JavaScript. Completed impactful web projects like FoodMood and ShareKind, focusing on real-world problem-solving. Interned at Brassy Academy as a Frontend Developer, building UI components and responsive layouts. Basic knowledge of backend technologies like PHP and MySQL, and solid understanding of core programming languages like Java, C, and C++. Currently focused on strengthening backend and DSA skills for 2025 product company roles like Zoho.</p>
+            <div>
+                <a href="#contact" class="btn">Contact Me</a>
+                <a href="https://github.com/MuthuRahul" class="btn" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/muthu-rahul-467096309" class="btn" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </header>
+    
+    <section class="section" id="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">PHP</span>
+                <span class="skill">MySQL</span>
+                <span class="skill">Java</span>
+                <span class="skill">C</span>
+                <span class="skill">C++</span>
+                <span class="skill">Responsive Design</span>
+                <span class="skill">UI/UX</span>
+                <span class="skill">Problem Solving</span>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <img src="pictures\logo.png" alt="ShareKind" class="project-img">
+                    <div class="project-content">
+                        <h3>ShareKind</h3>
+                        <p class="project-tech">HTML, CSS, JavaScript, PHP, MySQL</p>
+                        <p>A social donation platform that allows users to share stories, donate, encourage others, and upload images/videos.</p>
+                        <p>Designed a responsive interface with custom icons, reels, emergency sliders, and milestones.</p>
+                        <div style="margin-top: 1rem;">
+                            <a href="https://muthurahul.github.io/ShareKind/" class="btn" target="_blank">Live Demo</a>
+                            <a href="https://github.com/MuthuRahul/ShareKind.git" class="btn" target="_blank">View Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="pictures\image2.png" alt="FoodMood" class="project-img">
+                    <div class="project-content">
+                        <h3>FoodMood</h3>
+                        <p class="project-tech">HTML, CSS, JavaScript</p>
+                        <p>A food ordering web application with an attractive and responsive layout.</p>
+                        <p>Includes sections like categories, popular items, order flow, and testimonial banners.</p>
+                        <div style="margin-top: 1rem;">
+                            <a href="https://vscodehtml-kvy6.vercel.app/" class="btn" target="_blank">Live Demo</a>
+                            <a href="https://github.com/MuthuRahul/vscodehtml.git" class="btn" target="_blank">View Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="experience">
+        <div class="container">
+            <h2>Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Frontend Developer Intern</h3>
+                        <h4>Brassy Academy</h4>
+                        <p><em>Jan 2025 - Feb 2025</em></p>
+                        <ul style="margin-left: 1rem;">
+                            <li>Built responsive web pages and components using HTML, CSS, and JavaScript</li>
+                            <li>Contributed to UI design improvements and ensured cross-browser compatibility</li>
+                            <li>Collaborated with a mentor to understand client requirements and frontend best practices</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Freelance Full Stack Developer</h3>
+                        <h4>Project-Based Experience</h4>
+                        <p><em>2024 - Present</em></p>
+                        <ul style="margin-left: 1rem;">
+                            <li>Developed full-stack web applications addressing real-world needs</li>
+                            <li>Designed user interfaces, handled client-side interactivity, and integrated basic backend features</li>
+                            <li>Applied self-learning and project-based problem solving to build and deploy live websites</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="education">
+        <div class="container">
+            <h2>Education & Certification</h2>
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <!-- Education -->
+                <div style="background-color: white; padding: 2rem; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+                    <h3>BCA Degree</h3>
+                    <p><strong>St. Xavier's (Autonomous) College, Palayamkottai, Tirunelveli</strong></p>
+                    <p><em>2022 - 2025</em></p>
+                    <p>Accredited at A* Grade with a CGPA of 3.66 out of 4 in IV Cycle by NAAC</p>
+                </div>
+                
+                <!-- Certificates -->
+                <div style="background-color: white; padding: 2rem; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    <h3>Certifications</h3>
+                    <div class="certificates-grid">
+                        <!-- CSC Diploma -->
+                        <div class="certificate-card">
+                            <div class="certificate-img-container">
+                                <img src="pictures\csc.jpg" alt="Honours Diploma in Computer Programme" class="certificate-img">
+                            </div>
+                            <div class="certificate-details">
+                                <h4>Honours Diploma in Computer Programme (HDCP)</h4>
+                                <p><strong>CSC Computer Software College</strong></p>
+                                <p>ISO 9001:2016 Certified | Grade: A-Excellent</p>
+                                <p>Completed: October 2023</p>
+                                <button class="view-certificate-btn" onclick="openModal('pictures/csc.jpg', 'Honours Diploma in Computer Programme')">View Certificate</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Brassy Technologies Internship -->
+                        <div class="certificate-card">
+                            <div class="certificate-img-container">
+                                <img src="pictures\brassy.jpg" alt="Brassy Technologies Internship" class="certificate-img">
+                            </div>
+                            <div class="certificate-details">
+                                <h4>Internship Certificate</h4>
+                                <p><strong>Brassy Technologies</strong></p>
+                                <p>Frontend Development Intern</p>
+                                <p>May 2024 - June 2024</p>
+                                <button class="view-certificate-btn" onclick="openModal('pictures/brassy.jpg', 'Brassy Technologies Internship')">View Certificate</button>
+                            </div>
+                        </div>
+                        
+                        <!-- St. Xavier's Certificates -->
+                        <div class="certificate-card">
+                            <div class="certificate-img-container">
+                                <img src="pictures/a1.jpg" alt="Numerical Ability Certification" class="certificate-img">
+                            </div>
+                            <div class="certificate-details">
+                                <h4>Numerical Ability for BCA</h4>
+                                <p><strong>St. Xavier's College</strong></p>
+                                <p>Value Added Course (35 Hrs)</p>
+                                <p>Academic Year 2022-2023</p>
+                                <button class="view-certificate-btn" onclick="openModal('pictures/a1.jpg', 'Numerical Ability Certification')">View Certificate</button>
+                            </div>
+                        </div>
+                        
+                        <div class="certificate-card">
+                            <div class="certificate-img-container">
+                                <img src="pictures/a2.jpg" alt="Techniques in Reasoning Certification" class="certificate-img">
+                            </div>
+                            <div class="certificate-details">
+                                <h4>Techniques in Reasoning for BCA</h4>
+                                <p><strong>St. Xavier's College</strong></p>
+                                <p>Value Added Course (35 Hrs)</p>
+                                <p>Academic Year 2022-2023</p>
+                                <button class="view-certificate-btn" onclick="openModal('pictures/a2.jpg', 'Techniques in Reasoning Certification')">View Certificate</button>
+                            </div>
+                        </div>
+                        
+                        <!-- SCHMERZ GOLFGE Certificate -->
+                        <div class="certificate-card">
+                            <div class="certificate-img-container">
+                                <img src="pictures/achieve.jpg" alt="SCHMERZ GOLFGE Certificate" class="certificate-img">
+                            </div>
+                            <div class="certificate-details">
+                                <h4>SCHMERZ GOLFGE</h4>
+                                <p><strong>Special Achievement</strong></p>
+                                <p>Year: 2024</p>
+                                <button class="view-certificate-btn" onclick="openModal('pictures/achieve.jpg', 'SCHMERZ GOLFGE Certificate')">View Certificate</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Certificate Modal -->
+    <div id="certificateModal" class="modal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <h3 id="modal-title"></h3>
+            <img id="modal-image" src="" alt="" class="modal-certificate-img">
+        </div>
+    </div>
+    
+    <section class="section" id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p>Feel free to reach out for collaborations or just to say hello!</p>
+                
+                <div class="contact-links">
+                    <a href="mailto:rahulpitchiah2004@gmail.com" class="btn">Email</a>
+                    <a href="https://www.linkedin.com/in/muthu-rahul-467096309" class="btn" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/MuthuRahul" class="btn" target="_blank">GitHub</a>
+                    <a href="tel:9080874207" class="btn">Call</a>
+                </div>
+                
+                <div style="margin-top: 2rem;">
+                    <p><strong>Email:</strong> rahulpitchiah2004@gmail.com</p>
+                    <p><strong>Phone:</strong> +91 9080874207</p>
+                    <p><strong>Location:</strong> Tirunelveli, Tamil Nadu, India</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Muthu Rahul P. All rights reserved.</p>
+            <p>Designed and built with ❤️ by Muthu Rahul</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Dark mode toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+        }
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelectorAll('nav a').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                
+                this.classList.add('active');
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 60,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Certificate Modal Functions
+        function openModal(imgSrc, title) {
+            const modal = document.getElementById('certificateModal');
+            const modalImg = document.getElementById('modal-image');
+            const modalTitle = document.getElementById('modal-title');
+            
+            modal.style.display = "block";
+            modalImg.src = imgSrc;
+            modalImg.alt = title;
+            modalTitle.textContent = title;
+            
+            document.body.style.overflow = "hidden";
+        }
+        
+        function closeModal() {
+            document.getElementById('certificateModal').style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+        
+        // Close modal when clicking outside the image
+        window.onclick = function(event) {
+            const modal = document.getElementById('certificateModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
